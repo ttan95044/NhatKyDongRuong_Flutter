@@ -2,8 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nhatkydongruong/page/seeWork.dart';
-import 'package:nhatkydongruong/page_add_season/addUseFertilizer.dart';
+
 
 
 final _firestore = FirebaseFirestore.instance;
