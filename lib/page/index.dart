@@ -121,7 +121,7 @@ class _IndexStreamState extends State<IndexStream> {
       _xulygiongController.text = documentSnapshot['xulygiong'];
       _timetuoinuocController.text = documentSnapshot['timetuoinuoc'];
       _dophController.text = documentSnapshot['doph'];
-      _timedukienthuhoachController.text = documentSnapshot['timedukienthuhoach'];
+
     }
 
     await showModalBottomSheet(
@@ -238,14 +238,6 @@ class _IndexStreamState extends State<IndexStream> {
                         ),
                         style: TextStyle(fontSize: 20),
                       ),
-                      TextField(
-                        controller: _timedukienthuhoachController,
-                        decoration: const InputDecoration(
-                            labelText: 'Chỉnh sửa thời gian dữ kiện thu hoạch',
-                            labelStyle: TextStyle(fontSize: 25)
-                        ),
-                        style: TextStyle(fontSize: 20),
-                      ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -264,7 +256,6 @@ class _IndexStreamState extends State<IndexStream> {
                             final String xulygiong = _xulygiongController.text;
                             final String timetuoinuoc = _timetuoinuocController.text;
                             final String doph = _dophController.text;
-                            final String timedukienthuhoach = _timedukienthuhoachController.text;
                             await _add.doc(documentSnapshot!.id).update(
                                 {
                                   "mua": mua,
@@ -279,7 +270,6 @@ class _IndexStreamState extends State<IndexStream> {
                                   "xulygiong": xulygiong,
                                   "timetuoinuoc": timetuoinuoc,
                                   "doph": doph,
-                                  "timedukienthuhoach": timedukienthuhoach,
                                 });
                             _muaController.text = '';
                             _namController.text = '';
@@ -293,7 +283,6 @@ class _IndexStreamState extends State<IndexStream> {
                             _xulygiongController.text = '';
                             _timetuoinuocController.text = '';
                             _dophController.text = '';
-                            _timedukienthuhoachController.text = '';
                             Navigator.of(context).pop();
                           }
                       )
@@ -391,7 +380,10 @@ class _IndexStreamState extends State<IndexStream> {
                   GestureDetector(
                   onTap: () =>
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (_) =>  ttSeanson(documentSnapshot: documentSnapshot,))),
+                          builder: (_) =>
+                              ttSeanson(documentSnapshot: documentSnapshot,)
+                      )
+                      ),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Container(
@@ -413,14 +405,14 @@ class _IndexStreamState extends State<IndexStream> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Mùa vụ: ' + documentSnapshot['mua'],
+                                Text('Năm: ' + documentSnapshot['nam'],
                                   style: const TextStyle(
                                       fontSize: 25,
                                       color: Colors.white,
                                       fontFamily: 'NotoSerif'
                                   ),),
                                 const SizedBox(height: 8,),
-                                Text('Năm: ' + documentSnapshot['nam'],
+                                Text('Mùa vụ: ' + documentSnapshot['mua'],
                                   style: const TextStyle(
                                       fontSize: 25,
                                       color: Colors.white,
@@ -441,18 +433,6 @@ class _IndexStreamState extends State<IndexStream> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children:  [
-                                      GestureDetector(
-                                        onTap: (){
-                                          _adddrugs(documentSnapshot);
-                                        },
-                                        child: const CircleAvatar(
-                                          backgroundColor: Colors.lightGreen,
-                                          child: Icon(
-                                            FontAwesomeIcons.add,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
                                       const SizedBox(width: 8,),
                                       GestureDetector(
                                         onTap: (){
@@ -476,11 +456,11 @@ class _IndexStreamState extends State<IndexStream> {
                                                   title: Text("Xóa nhật ký?",style: TextStyle(fontFamily: 'NotoSerif'),),
                                                   content: Text("Bạn chắc chắn muốn xóa nhật ký?"),
                                                   actions: [
-                                                    FlatButton(onPressed: (){
+                                                    MaterialButton(onPressed: (){
                                                       Navigator.of(context).pop();
                                                     },child: Text('Không',style: TextStyle(fontSize: 17),),
                                                     ),
-                                                    FlatButton(onPressed: (){
+                                                    MaterialButton(onPressed: (){
                                                       _delete(documentSnapshot.id);
                                                       Navigator.of(context).pop();
                                                     },child: Text("Đồng ý",style: TextStyle(color: Colors.red,fontSize: 17),),

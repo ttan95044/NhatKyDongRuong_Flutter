@@ -30,7 +30,7 @@ class Nhatkydongruong extends StatelessWidget{
         index.id: (context) => const index(),
         suggestions.id: (context) => const suggestions(),
         addSeason.id: (context) => const addSeason(),
-        Splash.id: (context) => const Splash()
+        Splash.id: (context) => const Splash(),
       },
     );
   }

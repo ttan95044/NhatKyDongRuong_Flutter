@@ -2,6 +2,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nhatkydongruong/page/seeWork.dart';
+import 'package:nhatkydongruong/page_add_season/addUseFertilizer.dart';
 
 
 final _firestore = FirebaseFirestore.instance;
@@ -38,6 +40,7 @@ class _ttSeansonState extends State<ttSeanson> {
     }
   }
 
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +58,7 @@ class _ttSeansonState extends State<ttSeanson> {
           },
         ),
         backgroundColor: Colors.green[600],
-        title: const Text('Thông tin những mùa vụ',style: TextStyle(fontFamily: 'NotoSerif',fontSize: 22),),
+        title: const Text('Thông tin mùa vụ',style: TextStyle(fontFamily: 'NotoSerif',fontSize: 22),),
       ),
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
@@ -65,11 +68,71 @@ class _ttSeansonState extends State<ttSeanson> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                child: Text("- Mùa vụ: "+widget.documentSnapshot!['mua'],
-                  style: const TextStyle(
+                color: Colors.green,
+                child: MaterialButton(
+                    padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    minWidth: MediaQuery.of(context).size.width,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => addUseFertilizer(id: widget.documentSnapshot!['id'],)));
+                    },
+                    child: const Text(
+                      "Thêm những công việc &""\nThời gian ghi nhận sử dụng""\nThuốc và phân bón",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'NotoSerif'),
+                    )),
+              ),
+              const Divider(
+                height: 20,
+                thickness: 2,
+                indent: 5,
+                endIndent: 0,
+                color: Colors.black,
+              ),
+              Container(
+                color: Colors.blue,
+                child: MaterialButton(
+                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  minWidth: MediaQuery.of(context).size.width,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => seeWorkStream(id: widget.documentSnapshot!.id)));
+                  },
+                  child: const Text(
+                    "Xem chi tiết những công việc",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'NotoSerif'),
+                  ),
+                ),
+              ),
+              const Divider(
+                height: 20,
+                thickness: 2,
+                indent: 5,
+                endIndent: 0,
+                color: Colors.black,
+              ),
+              Text("- Mùa vụ: "+widget.documentSnapshot!['mua'],
+                style: const TextStyle(
+                  fontSize: 23,
+                  fontFamily: 'NotoSerif',height: 2
+                ),
+              ),
+              const Divider(
+                height: 20,
+                thickness: 2,
+                indent: 5,
+                endIndent: 0,
+                color: Colors.black,
+              ),
+              Text("- Năm trồng: "+widget.documentSnapshot!['nam'],
+                style: const TextStyle(
                     fontSize: 23,
-                    fontFamily: 'NotoSerif',height: 2
-                  ),
+                    fontFamily: 'NotoSerif', height: 2
                 ),
               ),
               const Divider(
@@ -79,27 +142,10 @@ class _ttSeansonState extends State<ttSeanson> {
                 endIndent: 0,
                 color: Colors.black,
               ),
-              Container(
-                child: Text("- Năm trồng: "+widget.documentSnapshot!['nam'],
-                  style: const TextStyle(
-                      fontSize: 23,
-                      fontFamily: 'NotoSerif', height: 2
-                  ),
-                ),
-              ),
-              const Divider(
-                height: 20,
-                thickness: 2,
-                indent: 5,
-                endIndent: 0,
-                color: Colors.black,
-              ),
-              Container(
-                child: Text("- Tên chủ hộ: "+widget.documentSnapshot!['name'],
-                  style: const TextStyle(
-                      fontSize: 23,
-                      fontFamily: 'NotoSerif', height: 2
-                  ),
+              Text("- Tên chủ hộ: "+widget.documentSnapshot!['name'],
+                style: const TextStyle(
+                    fontSize: 23,
+                    fontFamily: 'NotoSerif', height: 2
                 ),
               ),
               const Divider(
@@ -200,32 +246,6 @@ class _ttSeansonState extends State<ttSeanson> {
                 endIndent: 0,
                 color: Colors.black,
               ),
-              Text("- Loại thuốc đã sử dụng: \n""\ + "+ widget.documentSnapshot!['nameloaithuoc'],
-                style: const TextStyle(
-                    fontSize: 23,
-                    fontFamily: 'NotoSerif',height: 2
-                ),
-              ),
-              const Divider(
-                height: 20,
-                thickness: 2,
-                indent: 5,
-                endIndent: 0,
-                color: Colors.black,
-              ),
-              Text("- Loại phân bón đã sử dụng: \n""\ + "+widget.documentSnapshot!['nameloaiphanbon'],
-                style: const TextStyle(
-                    fontSize: 23,
-                    fontFamily: 'NotoSerif', height: 2
-                ),
-              ),
-              const Divider(
-                height: 20,
-                thickness: 2,
-                indent: 5,
-                endIndent: 0,
-                color: Colors.black,
-              ),
               Text("- Chu kỳ tưới nước: "+widget.documentSnapshot!['timetuoinuoc'],
                 style: const TextStyle(
                     fontSize: 23,
@@ -252,7 +272,7 @@ class _ttSeansonState extends State<ttSeanson> {
                 endIndent: 0,
                 color: Colors.black,
               ),
-              Text("- Thời gian dự kiến thu hoạch: ""\n -> "+widget.documentSnapshot!['timedukienthuhoach'],
+              Text("- Độ pH của đất: "+widget.documentSnapshot!['nam'],
                 style: const TextStyle(
                     fontSize: 23,
                     fontFamily: 'NotoSerif', height: 2
@@ -265,6 +285,7 @@ class _ttSeansonState extends State<ttSeanson> {
                 endIndent: 0,
                 color: Colors.black,
               ),
+
             ],
           ),
         ),

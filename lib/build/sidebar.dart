@@ -89,15 +89,15 @@ class _SidebarState extends State<Sidebar> {
                         title: Text("Đăng xuất tài khoản?",style: TextStyle(fontFamily: 'NotoSerif'),),
                         content: Text("Bạn chắc chắn muốn đăng xuất"),
                         actions: [
-                          FlatButton(onPressed: (){
+                          MaterialButton(onPressed: (){
                             Navigator.of(context).pop();
                           },child: Text('Không',style: TextStyle(fontSize: 17),),
                           ),
-                          FlatButton(onPressed: () async {
+                          MaterialButton(onPressed: () async {
                             final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
                             sharedPreferences.remove('email');
+                            FirebaseAuth.instance.signOut();
                             Navigator.pushNamed(context, welcome.id);
-                            Navigator.of(context).pop();
                           },child: Text("Đăng xuất",style: TextStyle(color: Colors.red,fontSize: 17),),
                           ),
 

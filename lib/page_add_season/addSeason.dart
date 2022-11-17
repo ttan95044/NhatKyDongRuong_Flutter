@@ -1,8 +1,9 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nhatkydongruong/build/navbar.dart';
 import '../build/contrast.dart';
 
@@ -30,8 +31,8 @@ class _addSeasonState extends State<addSeason> {
   String? messageText;
   String? mua,nam,name,loaicaytrong,sohacaytrong,diachi,soluongha;
   String? ngayxuonggiong,soluonggiong,soluonghagiong,xulygiong;
-  String? nameloaithuoc,nameloaiphanbon,timetuoinuoc;
-  String? doph,timedukienthuhoach;
+  String? timetuoinuoc;
+  String? doph,id;
 
   final _formKey = GlobalKey<FormState>();
   //mua vu
@@ -46,13 +47,10 @@ class _addSeasonState extends State<addSeason> {
   final ngayxuonggiongEditingController = new TextEditingController();
   final soluonggiongEditingController = new TextEditingController();
   final xulygiongEditingController = new TextEditingController();
-  //phan va thuoc
-  final nameloaithuocEditingController = new TextEditingController();
-  final nameloaiphanbonEditingController = new TextEditingController();
   final timetuoinuocEditingController = new TextEditingController();
   final dophEditingController = new TextEditingController();
-  //thoi gian du kien thu hoach
-  final timedukienthuhoachEditingController = new TextEditingController();
+
+
 
   @override
   void initState() {
@@ -279,46 +277,6 @@ class _addSeasonState extends State<addSeason> {
         ),
         );
 
-    final nameloaithuocbt = TextFormField(
-        textAlign: TextAlign.center,
-        controller: nameloaithuocEditingController,
-        validator: (value) => ((value?.length ?? 0) < 1
-            ? 'Không Được Để Trống.'
-            : null),
-        keyboardType: TextInputType.text,
-        onChanged: (value) {
-          nameloaithuoc= value.toString();
-        },
-        textInputAction: TextInputAction.next,
-        decoration: kTextFieldDecoration.copyWith(
-          hintText: "VD: Comcat,..v..v..",
-          labelText: "Những loại thuốc sử dụng",
-          labelStyle: TextStyle(
-            color: Colors.green[700], //<-- SEE HERE
-          ),
-        ),
-        );
-
-    final nameloaiphanbonbt = TextFormField(
-        textAlign: TextAlign.center,
-        controller: nameloaiphanbonEditingController,
-        validator: (value) => ((value?.length ?? 0) < 1
-            ? 'Không Được Để Trống.'
-            : null),
-        keyboardType: TextInputType.text,
-        onChanged: (value) {
-          nameloaiphanbon= value.toString();
-        },
-        textInputAction: TextInputAction.next,
-        decoration: kTextFieldDecoration.copyWith(
-          hintText: "VD: Đạm 20-20-15,...v...v...",
-          labelText: "Những Loại Phân Bón Sử Dụng",
-          labelStyle: TextStyle(
-            color: Colors.green[700], //<-- SEE HERE
-          ),
-        ),
-        );
-
     final timetuoinuocbt = TextFormField(
         textAlign: TextAlign.center,
         controller: timetuoinuocEditingController,
@@ -359,25 +317,6 @@ class _addSeasonState extends State<addSeason> {
         ),
     );
 
-    final timedukienthuhoachbt = TextFormField(
-        textAlign: TextAlign.center,
-        controller: timedukienthuhoachEditingController,
-        validator: (value) => ((value?.length ?? 0) < 1
-            ? 'Không Được Để Trống.'
-            : null),
-        keyboardType: TextInputType.text,
-        onChanged: (value) {
-          timedukienthuhoach= value.toString();
-        },
-        textInputAction: TextInputAction.next,
-        decoration: kTextFieldDecoration.copyWith(
-          hintText: "VD: 20/2/2022...",
-          labelText: "Thời gian dự kiến thu hoạch",
-          labelStyle: TextStyle(
-            color: Colors.green[700], //<-- SEE HERE
-          ),
-        ),
-    );
 
 
     //add button
@@ -454,27 +393,10 @@ class _addSeasonState extends State<addSeason> {
                     const SizedBox(height: 15),
                     xulygiongbt,
                     const SizedBox(height: 15),
-                    const Text('Thuốc và Phân Bón',style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.green,
-                        fontFamily: 'NotoSerif'
-                    ),),
-                    const SizedBox(height: 15),
-                    nameloaithuocbt,
-                    const SizedBox(height: 15),
-                    nameloaiphanbonbt,
-                    const SizedBox(height: 15),
                     timetuoinuocbt,
                     const SizedBox(height: 15),
                     dophbt,
                     const SizedBox(height: 15),
-                    const Text('Thời gian',style: TextStyle(
-                        fontSize: 35,
-                        color: Colors.green,
-                        fontFamily: 'NotoSerif'
-                    ),),
-                    const SizedBox(height: 15),
-                    timedukienthuhoachbt,
                     const SizedBox(height: 15),
                     addButton,
                   ],
@@ -487,9 +409,11 @@ class _addSeasonState extends State<addSeason> {
     );
   }
   void Add() {
+    id = _firestore.collection('add').doc().id;
     final FormState? form = _formKey.currentState;
     if (form!.validate()) {
-      _firestore.collection('add').add({
+      _firestore.collection('add').doc(id).set({
+        'id': id ,
         'timestamp': DateTime.now(),
         'email': loggedInUser.email,
         'mua': mua,
@@ -502,11 +426,8 @@ class _addSeasonState extends State<addSeason> {
         'ngayxuonggiong':ngayxuonggiong,
         'soluonggiong':soluonggiong,
         'xulygiong':xulygiong,
-        'nameloaithuoc':nameloaithuoc,
-        'nameloaiphanbon':nameloaiphanbon,
         'timetuoinuoc':timetuoinuoc,
         'doph':doph,
-        'timedukienthuhoach':timedukienthuhoach,
 
       });
       EasyLoading.showSuccess('Add Successful!');

@@ -12,7 +12,6 @@ class navBar extends StatefulWidget{
   static const String id = 'navbar';
   @override
   State<navBar> createState() => _navBarState();
-
 }
 class _navBarState extends State<navBar> {
   final navbar = [
@@ -20,8 +19,6 @@ class _navBarState extends State<navBar> {
     const suggestions(),
   ];
   int _selectedIndex = 0;
-  @override
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,16 +31,16 @@ class _navBarState extends State<navBar> {
         backgroundColor: Colors.white,
         currentIndex: _selectedIndex,
         unselectedIconSize: 25,
-        selectedIconSize: 30,
+        selectedIconSize: 35,
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
           });
         },
         enableLineIndicator: true,
-        lineIndicatorWidth: 3,
+        lineIndicatorWidth: 0,
         indicatorType: IndicatorType.Top,
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Colors.green, Colors.green],
         ),
         customBottomBarItems: [
@@ -55,7 +52,6 @@ class _navBarState extends State<navBar> {
             label: 'Gợi Ý',
             icon: Icons.announcement,
           ),
-
         ],
       ),
     );
