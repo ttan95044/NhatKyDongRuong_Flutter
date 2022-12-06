@@ -40,7 +40,7 @@ class _WelComeState extends State<welcome> with SingleTickerProviderStateMixin{
             image: DecorationImage(
                 image: AssetImage('lib/asset/img/logo1.png',),
                 fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
+                colorFilter: ColorFilter.mode(Colors.black45, BlendMode.darken)
             )
         ),
         child: Padding(
