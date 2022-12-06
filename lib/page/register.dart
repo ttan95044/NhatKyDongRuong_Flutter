@@ -211,7 +211,7 @@ class _RegisterState extends State<Register>{
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.blueAccent),
+          icon: const Icon(Icons.arrow_back, color: Colors.green),
           onPressed: () {
             // passing this to our root
             Navigator.of(context).pop();
@@ -232,7 +232,7 @@ class _RegisterState extends State<Register>{
                   children: <Widget>[
                     const CircleAvatar(
                       radius: 70,
-                      backgroundImage: AssetImage('lib/asset/img/hinhanh2.jpg'),
+                      backgroundImage: AssetImage('lib/asset/img/logo.png'),
                     ),
                     const SizedBox(height: 20),
                     firstNameField,

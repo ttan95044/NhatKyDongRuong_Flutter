@@ -230,7 +230,7 @@ class _addSeasonState extends State<addSeason> {
         textInputAction: TextInputAction.next,
         decoration: kTextFieldDecoration.copyWith(
           hintText: "VD: 20KG/Ha, 200 Cây/Ha....",
-          labelText: 'Số Lượng Giống/HA Đất',
+          labelText: 'Số lượng giống/HA Đất',
           labelStyle: TextStyle(
             color: Colors.green[700], //<-- SEE HERE
           ),

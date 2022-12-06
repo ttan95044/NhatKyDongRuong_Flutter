@@ -59,7 +59,7 @@ class _seeWorkDetailsState extends State<seeWorkDetails> {
         backgroundColor: Colors.green[600],
         title: const Text('Chi tiết công việc',style: TextStyle(fontFamily: 'NotoSerif',fontSize: 22),),
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

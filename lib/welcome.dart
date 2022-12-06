@@ -38,7 +38,7 @@ class _WelComeState extends State<welcome> with SingleTickerProviderStateMixin{
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('lib/asset/img/hinhanh.jpg',),
+                image: AssetImage('lib/asset/img/logo1.png',),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
             )
@@ -51,7 +51,7 @@ class _WelComeState extends State<welcome> with SingleTickerProviderStateMixin{
             children: <Widget> [
               const CircleAvatar(
                 radius: 100.0,
-                backgroundImage: AssetImage('lib/asset/img/hinhanh2.jpg'),
+                backgroundImage: AssetImage('lib/asset/img/logo.png'),
               ),
               const SizedBox(
                 height: 10,

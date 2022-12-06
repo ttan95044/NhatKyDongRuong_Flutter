@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
           children: <Widget>[
             const CircleAvatar(
               radius: 100,
-              backgroundImage: AssetImage('lib/asset/img/hinhanh2.jpg'),
+              backgroundImage: AssetImage('lib/asset/img/logo.png'),
             ),
             const SizedBox(
               height: 30.0,

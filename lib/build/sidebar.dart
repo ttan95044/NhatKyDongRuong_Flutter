@@ -43,10 +43,10 @@ class _SidebarState extends State<Sidebar> {
           children: [
             UserAccountsDrawerHeader(
               accountName:
-              Text("${loggedInUser.secondName} ${loggedInUser.firstName}",
+              Text("${loggedInUser.firstName} ${loggedInUser.secondName}",
                   style: const TextStyle(
                     fontSize: 25,
-                    color: Colors.white,
+                    color: Colors.green,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'NotoSerif'
                   )),
@@ -54,14 +54,14 @@ class _SidebarState extends State<Sidebar> {
               Text("${loggedInUser.email}",
                   style: const TextStyle(
                     fontSize: 25,
-                    color: Colors.white,
+                    color: Colors.green,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'NotoSerif'
                   )),
               decoration: const BoxDecoration(
               color: Colors.green,
               image: DecorationImage(
-                image: AssetImage('lib/asset/img/hinhanh4.jpg'),
+                image: AssetImage('lib/asset/img/logo2.png'),
                 fit: BoxFit.cover
               )
             ),

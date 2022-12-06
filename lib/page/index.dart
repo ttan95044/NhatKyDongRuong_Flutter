@@ -54,7 +54,7 @@ class _indexState extends State<index> {
         body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('lib/asset/img/hinhanh.jpg',),
+                    image: AssetImage('lib/asset/img/hinhanh2.jpg',),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
                 )
@@ -439,7 +439,7 @@ class _IndexStreamState extends State<IndexStream> {
                                           _edit(documentSnapshot);
                                         },
                                         child: const CircleAvatar(
-                                          backgroundColor: Colors.lightGreen,
+                                          backgroundColor: Colors.green,
                                           child: Icon(
                                             FontAwesomeIcons.edit,
                                             color: Colors.white,
@@ -472,7 +472,7 @@ class _IndexStreamState extends State<IndexStream> {
                                           );
                                         },
                                         child: const CircleAvatar(
-                                          backgroundColor: Colors.lightGreen,
+                                          backgroundColor: Colors.green,
                                           child: Icon(
                                             FontAwesomeIcons.trash,
                                             color: Colors.white,

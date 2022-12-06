@@ -60,7 +60,7 @@ class _ttSeansonState extends State<ttSeanson> {
         backgroundColor: Colors.green[600],
         title: const Text('Thông tin mùa vụ',style: TextStyle(fontFamily: 'NotoSerif',fontSize: 22),),
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

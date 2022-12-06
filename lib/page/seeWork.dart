@@ -65,7 +65,7 @@ class _seeWorkStreamState extends State<seeWorkStream> {
         context: context,
         builder: (BuildContext ctx) {
           return Container(
-            color: Colors.grey[200],
+            color: Colors.grey[300],
             child: Padding(
               padding: EdgeInsets.only(
                   top: 20,
@@ -248,7 +248,7 @@ class _seeWorkStreamState extends State<seeWorkStream> {
                                                 builder: (_) {
                                                   return AlertDialog(
                                                     title: Text("Xóa nhật ký?",style: TextStyle(fontFamily: 'NotoSerif'),),
-                                                    content: Text("Bạn chắc chắn muốn xóa nhật ký?"),
+                                                    content: Text("Bạn chắc chắn muốn xóa công việc?"),
                                                     actions: [
                                                       MaterialButton(onPressed: (){
                                                         Navigator.of(context).pop();
