@@ -54,7 +54,7 @@ class _indexState extends State<index> {
         body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('lib/asset/img/hinhanh2.jpg',),
+                    image: AssetImage('lib/asset/img/logo.png',),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
                 )
